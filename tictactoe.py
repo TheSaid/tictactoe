@@ -28,13 +28,20 @@ def displayBoard(board):
             display[i] = '_'
     for i in range(0,9,3):
         print display[0+i] + '|' + display[1+i] + '|' + display[2+i]
+<<<<<<< HEAD
         
+=======
+
+>>>>>>> FETCH_HEAD
 def checkLegalMove(move, board):
     if move in range(9):
         if board[move] is ' ':
             return True
     return False
+<<<<<<< HEAD
 
 print 'Welcome to Tic Tac Toe, when you enter the number of the square you want to move in, keep in mid that spaces are numbered like you would read a book. The numbers start at 1 and end at 9.'
 print 'Please enter the space number you would like to move in.'
 space = input('Please enter the space number you would like to move in: ')
+=======
+>>>>>>> FETCH_HEAD
