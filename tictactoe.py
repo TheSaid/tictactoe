@@ -28,3 +28,9 @@ def displayBoard(board):
             display[i] = '_'
     for i in range(0,9,3):
         print display[0+i] + '|' + display[1+i] + '|' + display[2+i]
+
+def checkLegalMove(move, board):
+    if move in range(9):
+        if board[move] is ' ':
+            return True
+    return False
