@@ -21,9 +21,10 @@ def winner(board):
 def displayBoard(board):
     '''Display tic-tac-toe board.
     board is a list of 'X', 'O', and ' ' representing the state of the board'''
-
+    
+    display = board[:]
     for i in range(6):
-        if board[i] is ' ':
-        board[i] = '_'
+        if display[i] is ' ':
+            display[i] = '_'
     for i in range(0,9,3):
-        print board[0+i] + '|' + board[1+i] + '|' + board[2+i]
+        print display[0+i] + '|' + display[1+i] + '|' + display[2+i]
