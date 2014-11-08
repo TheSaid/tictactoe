@@ -1,4 +1,4 @@
-def winner(board):
+def checkWinner(board):
 	'''When run, function checks to see if the game has been won.
 	Board should be input as a list of 'X', 'O', and ' ' representing the state of the board'''
 	if board[0] == board[1] and board[1] == board[2] and board[0] != ' ':
@@ -28,20 +28,32 @@ def displayBoard(board):
             display[i] = '_'
     for i in range(0,9,3):
         print display[0+i] + '|' + display[1+i] + '|' + display[2+i]
-<<<<<<< HEAD
-        
-=======
 
->>>>>>> FETCH_HEAD
 def checkLegalMove(move, board):
     if move in range(9):
         if board[move] is ' ':
             return True
     return False
-<<<<<<< HEAD
+
+def mover(turn):
+	if turn % 2 == 0:
+		return 'o'
+	else:
+		return 'x'
+
+board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
+turn = 1
+winner = 'None'
 
 print 'Welcome to Tic Tac Toe, when you enter the number of the square you want to move in, keep in mid that spaces are numbered like you would read a book. The numbers start at 1 and end at 9.'
-print 'Please enter the space number you would like to move in.'
-space = input('Please enter the space number you would like to move in: ')
-=======
->>>>>>> FETCH_HEAD
+while winner == 'None':
+	
+	move = input('Please enter the space number you would like to move in: ') - 1
+	
+	if checkLegalMove(move, board):
+		board[move] = mover(turn)
+		turn = turn + 1
+	else:
+		print 'Please enter a valid move'
+
+	winner = checkWinner(board)
