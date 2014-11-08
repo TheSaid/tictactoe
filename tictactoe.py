@@ -1,4 +1,6 @@
 def winner(board):
+	'''When run, function checks to see if the game has been won.
+	Board should be input as a list of 'X', 'O', and ' ' representing the state of the board'''
 	if board[0] == board[1] and board[1] == board[2] and board[0] != " ":
 		return board[0]
 	if board[3] == board[4] and board[4] == board[5] and board[3] != " ":
@@ -15,3 +17,13 @@ def winner(board):
 		return board[0]
 	if board[2] == board[4] and board[4] == board[6] and board[2] != " ":
 		return board[2]
+		
+def displayBoard(board):
+    '''Display tic-tac-toe board.
+    board is a list of 'X', 'O', and ' ' representing the state of the board'''
+
+    for i in range(6):
+        if board[i] is ' ':
+        board[i] = '_'
+    for i in range(0,9,3):
+        print board[0+i] + '|' + board[1+i] + '|' + board[2+i]
