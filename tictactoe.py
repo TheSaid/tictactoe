@@ -1,6 +1,8 @@
 def checkWinner(board):
 	'''When run, function checks to see if the game has been won.
 	Board should be input as a list of 'X', 'O', and ' ' representing the state of the board'''
+	if ' ' not in board:
+		return 'Cat'
 	if board[0] == board[1] and board[1] == board[2] and board[0] != ' ':
 		return board[0]
 	if board[3] == board[4] and board[4] == board[5] and board[3] != ' ':
@@ -43,10 +45,12 @@ def mover(turn):
 
 board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
 turn = 1
-winner = 'None'
+winner = None
 
 print 'Welcome to Tic Tac Toe, when you enter the number of the square you want to move in, keep in mid that spaces are numbered like you would read a book. The numbers start at 1 and end at 9.'
-while winner == 'None':
+while winner != 'x' and winner != 'o' and winner != 'Cat':
+	
+	displayBoard(board)
 	
 	move = input('Please enter the space number you would like to move in: ') - 1
 	
@@ -57,3 +61,5 @@ while winner == 'None':
 		print 'Please enter a valid move'
 
 	winner = checkWinner(board)
+
+print winner + " won!"
