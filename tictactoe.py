@@ -49,6 +49,7 @@ board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
 turn = 1
 winner = None
 
+<<<<<<< Updated upstream
 print 'Welcome to Tic Tac Toe, when you enter the number of the square you want to move in, keep in mid that spaces are numbered like you would read a book. The numbers start at 1 and end at 9.'
 while winner != 'x' and winner != 'o' and winner != 'Cat':
 	
@@ -72,3 +73,42 @@ def easyComputer(board):
     
     legal_moves = [i for i, x in enumerate(board) if x == ' ']
     return random.choice(legal_moves)
+=======
+print 'Welcome to Tic Tac Toe, when you enter the number of the square you want to move in, keep in mind that spaces are numbered like you would read a book. The numbers start at 1 and end at 9.'
+choice = input("Please input 1 for Human v. Human and 2 for Human v. Computer: ")
+if choice == 1:
+	while winner != 'x' and winner != 'o' and winner != 'Cat':
+		
+		displayBoard(board)
+		
+		move = input('Please enter the space number you would like to move in: ') - 1
+		
+		if checkLegalMove(move, board):
+			board[move] = mover(turn)
+			turn = turn + 1
+		else:
+			print 'Please enter a valid move'
+		
+		winner = checkWinner(board)
+		
+	print winner + " won!"
+else:
+	difficulty = input("Enter 1 for easy difficulty, 2 for medium, and 3 for hard: ")
+	if difficulty == 1:
+		while winner != 'x' and winner != 'o' and winner!= 'Cat':
+			if turn % 2 != 0:
+				displayBoard(board)
+				
+				move = input('Please enter the space number you would like to move in: ') - 1
+				
+				if checkLegalMove(move, board):
+					board[move] = mover(turn)
+					turn = turn + 1
+				else:
+					print 'Please enter a valid move'
+					
+				winner = checkWinner(board)
+			else:
+				move = input('''random move script''')
+		print winner + " won!"
+>>>>>>> Stashed changes
