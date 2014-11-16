@@ -1,3 +1,5 @@
+import random
+
 def checkWinner(board):
 	'''When run, function checks to see if the game has been won.
 	Board should be input as a list of 'X', 'O', and ' ' representing the state of the board'''
@@ -63,3 +65,10 @@ while winner != 'x' and winner != 'o' and winner != 'Cat':
 	winner = checkWinner(board)
 
 print winner + " won!"
+
+def easyComputer(board):
+    '''Tic-tac-toe easy computer opponent.
+    Receives a board and returns a random legal move.'''
+    
+    legal_moves = [i for i, x in enumerate(board) if x == ' ']
+    return random.choice(legal_moves)
