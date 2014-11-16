@@ -56,6 +56,31 @@ def easyComputer(board):
     legal_moves = [i for i, x in enumerate(board) if x == ' ']
     return random.choice(legal_moves)
 
+def mediumComputer(board):
+    '''Tic-tac-toe medium computer opponent.
+    Receives a board and returns 
+        1) a winning move, or else
+        2) a move that blocks the opponent's winning move, or else
+        3) a random legal move.'''
+    
+    legal_moves = [i for i, x in enumerate(board) if x == ' ']
+    
+    #is computer 'x' or 'o'
+    if board.count('x') != board.count('o'):
+        computer, opponent = 'o', 'x'
+    else:
+        computer, opponent = 'x', 'o'
+    
+    #check for win by computer or opponent and move if positive
+    for player in [computer, opponent]:
+        for move in legal_moves:
+            new_board = board[:]
+            new_board[move] = player
+            if checkWinner(new_board) == player:
+                return move
+    #otherwise, return a random legal move
+    return random.choice(legal_moves)
+
 print 'Welcome to Tic Tac Toe, when you enter the number of the square you want to move in, keep in mind that spaces are numbered like you would read a book. The numbers start at 1 and end at 9.'
 choice = input("Please input 1 for Human v. Human and 2 for Human v. Computer: ")
 if choice == 1:
