@@ -91,5 +91,39 @@ else:
 					
 				winner = checkWinner(board)
 			else:
-				move = input('''random move script''')
+				move = input(easyComputer(board))
 		print winner + " won!"
+	if difficulty == 2:
+		while winner != 'x' and winner != 'o' and winner!= 'Cat':
+			if turn % 2 != 0:
+				displayBoard(board)
+				
+				move = input('Please enter the space number you would like to move in: ') - 1
+				
+				if checkLegalMove(move, board):
+					board[move] = mover(turn)
+					turn = turn + 1
+				else:
+					print 'Please enter a valid move'
+					
+				winner = checkWinner(board)
+			else:
+				move = input(mediumComputer(board))
+		print winner + " won!
+	if difficulty == 3:
+		while winner != 'x' and winner != 'o' and winner!= 'Cat':
+			if turn % 2 != 0:
+				displayBoard(board)
+				
+				move = input('Please enter the space number you would like to move in: ') - 1
+				
+				if checkLegalMove(move, board):
+					board[move] = mover(turn)
+					turn = turn + 1
+				else:
+					print 'Please enter a valid move'
+					
+				winner = checkWinner(board)
+			else:
+				move = input(hardComputer(board))
+		print winner + " won!
