@@ -134,7 +134,7 @@ else:
 				winner = checkWinner(board)
 			else:
 				move = input(mediumComputer(board))
-		print winner + " won!
+		print winner + " won!"
 	if difficulty == 3:
 		while winner != 'x' and winner != 'o' and winner!= 'Cat':
 			if turn % 2 != 0:
@@ -151,4 +151,4 @@ else:
 				winner = checkWinner(board)
 			else:
 				move = input(hardComputer(board))
-		print winner + " won!
+		print winner + " won!"
