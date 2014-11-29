@@ -113,10 +113,9 @@ else:
 					turn = turn + 1
 				else:
 					print 'Please enter a valid move'
-					
-				winner = checkWinner(board)
 			else:
 				move = input(easyComputer(board))
+			winner = checkWinner(board)
 		print winner + " won!"
 	if difficulty == 2:
 		while winner != 'x' and winner != 'o' and winner!= 'Cat':
