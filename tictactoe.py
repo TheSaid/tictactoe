@@ -1,5 +1,4 @@
 import random
-import console
 
 def checkWinner(board):
 	'''When run, function checks to see if the game has been won.
@@ -114,7 +113,6 @@ def computer(difficulty):
 	print winner + ' won the game!'
 
 
-console.clear()
 print 'Welcome to Tic Tac Toe, when you enter the number of the square you want to move in, keep in mind that spaces are numbered like you would read a book. The numbers start at 1 and end at 9.'
 choice = input('Please input 1 for Human v. Human and 2 for Human v. Computer: ')
 if choice == 1:
