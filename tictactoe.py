@@ -3,8 +3,6 @@ import random
 def checkWinner(board):
 	'''When run, function checks to see if the game has been won.
 	Board should be input as a list of 'X', 'O', and ' ' representing the state of the board'''
-	if ' ' not in board:
-		return 'Cat'
 	if board[0] == board[1] and board[1] == board[2] and board[0] != ' ':
 		return board[0]
 	if board[3] == board[4] and board[4] == board[5] and board[3] != ' ':
@@ -21,6 +19,8 @@ def checkWinner(board):
 		return board[0]
 	if board[2] == board[4] and board[4] == board[6] and board[2] != ' ':
 		return board[2]
+	if ' ' not in board:
+		return 'Cat'
 		
 def displayBoard(board):
     '''Display tic-tac-toe board.
@@ -81,6 +81,16 @@ def mediumComputer(board):
     #otherwise, return a random legal move
     return random.choice(legal_moves)
     
+def hardComputer(board):
+    #is computer 'x' or 'o'
+    if board.count('x') != board.count('o'):
+        computer, opponent = 'o', 'x'
+    else:
+        computer, opponent = 'x', 'o'
+    for i in range(9):
+        board[i] = computer
+    return 1
+    
 def computer(difficulty):
 	difficulty = difficulty
 	winner = None
@@ -100,7 +110,6 @@ def computer(difficulty):
 			
 			winner = checkWinner(board)
 		else:
-			winner = checkWinner(board)
 			if difficulty == 1:
 				board[easyComputer(board)] = mover(turn)
 				turn = turn + 1
@@ -108,8 +117,12 @@ def computer(difficulty):
 				board[mediumComputer(board)] = mover(turn)
 				turn = turn + 1
 			if difficulty == 3:
-				board[hardComputer(board)] = mover(turn)
+				move = mover(turn)
+				getHardComputer = hardComputer(board)
+				board[hardComputer(board)] = move
 				turn = turn + 1
+			winner = checkWinner(board)
+	displayBoard(board)
 	print winner + ' won the game!'
 
 
@@ -132,6 +145,7 @@ if choice == 1:
 		
 		winner = checkWinner(board)
 		
+	displayBoard(board)
 	print winner + ' won the game!'
 else:
 	computer(input('Please input 1 for easy difficulty 2 for medium difficulty and 3 for hard difficulty: '))
