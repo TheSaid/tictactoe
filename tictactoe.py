@@ -1,4 +1,5 @@
 import random
+import console
 
 def checkWinner(board):
 	'''When run, function checks to see if the game has been won.
@@ -82,6 +83,7 @@ def mediumComputer(board):
     return random.choice(legal_moves)
     
 def computer(difficulty):
+	difficulty = difficulty
 	winner = None
 	turn = 1
 	while winner != 'x' and winner != 'o' and winner != 'Cat':
@@ -89,7 +91,7 @@ def computer(difficulty):
 		if turn % 2 != 0:
 			displayBoard(board)
 			
-			move = input('Please enter the space you would like to move in: ')
+			move = input('Please enter the space you would like to move in: ') - 1
 			
 			if checkLegalMove(move, board):
 				board[move] = mover(turn)
@@ -99,18 +101,20 @@ def computer(difficulty):
 			
 			winner = checkWinner(board)
 		else:
+			winner = checkWinner(board)
 			if difficulty == 1:
 				board[easyComputer(board)] = mover(turn)
 				turn = turn + 1
 			if difficulty == 2:
 				board[mediumComputer(board)] = mover(turn)
 				turn = turn + 1
-			else:
+			if difficulty == 3:
 				board[hardComputer(board)] = mover(turn)
 				turn = turn + 1
+	print winner + ' won the game!'
 
 
-
+console.clear()
 print 'Welcome to Tic Tac Toe, when you enter the number of the square you want to move in, keep in mind that spaces are numbered like you would read a book. The numbers start at 1 and end at 9.'
 choice = input('Please input 1 for Human v. Human and 2 for Human v. Computer: ')
 if choice == 1:
@@ -130,6 +134,6 @@ if choice == 1:
 		
 		winner = checkWinner(board)
 		
-	print winner + ' won!'
+	print winner + ' won the game!'
 else:
 	computer(input('Please input 1 for easy difficulty 2 for medium difficulty and 3 for hard difficulty: '))
