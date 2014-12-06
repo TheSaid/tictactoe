@@ -57,10 +57,10 @@ def easyComputer(board):
     return random.choice(legal_moves)
 
 def mediumComputer(board):
-    '''Tic-tac-toe medium computer opponent.
+    '''Tic-tac-toe medium computer opponent. 1 is top priority 3 is lowest priority.
     Receives a board and returns 
-        1) a winning move, or else
-        2) a move that blocks the opponent's winning move, or else
+        1) a winning move
+        2) a move that blocks the opponent's winning move
         3) a random legal move.'''
     
     legal_moves = [i for i, x in enumerate(board) if x == ' ']
@@ -80,10 +80,42 @@ def mediumComputer(board):
                 return move
     #otherwise, return a random legal move
     return random.choice(legal_moves)
+    
+def computer(difficulty):
+	winner = None
+	turn = 1
+	while winner != 'x' and winner != 'o' and winner != 'Cat':
+	
+		if turn % 2 != 0:
+			displayBoard(board)
+			
+			move = input('Please enter the space you would like to move in: ')
+			
+			if checkLegalMove(move, board):
+				board[move] = mover(turn)
+				turn = turn + 1
+			else:
+				print 'Please enter a valid move'
+			
+			winner = checkWinner(board)
+		else:
+			if difficulty == 1:
+				board[easyComputer(board)] = mover(turn)
+				turn = turn + 1
+			if difficulty == 2:
+				board[mediumComputer(board)] = mover(turn)
+				turn = turn + 1
+			else:
+				board[hardComputer(board)] = mover(turn)
+				turn = turn + 1
+
+
 
 print 'Welcome to Tic Tac Toe, when you enter the number of the square you want to move in, keep in mind that spaces are numbered like you would read a book. The numbers start at 1 and end at 9.'
-choice = input("Please input 1 for Human v. Human and 2 for Human v. Computer: ")
+choice = input('Please input 1 for Human v. Human and 2 for Human v. Computer: ')
 if choice == 1:
+	winner = None
+	turn = 1
 	while winner != 'x' and winner != 'o' and winner != 'Cat':
 		
 		displayBoard(board)
@@ -98,56 +130,6 @@ if choice == 1:
 		
 		winner = checkWinner(board)
 		
-	print winner + " won!"
+	print winner + ' won!'
 else:
-	difficulty = input("Enter 1 for easy difficulty, 2 for medium, and 3 for hard: ")
-	if difficulty == 1:
-		while winner != 'x' and winner != 'o' and winner!= 'Cat':
-			if turn % 2 != 0:
-				displayBoard(board)
-				
-				move = input('Please enter the space number you would like to move in: ') - 1
-				
-				if checkLegalMove(move, board):
-					board[move] = mover(turn)
-					turn = turn + 1
-				else:
-					print 'Please enter a valid move'
-			else:
-				move = input(easyComputer(board))
-			winner = checkWinner(board)
-		print winner + " won!"
-	if difficulty == 2:
-		while winner != 'x' and winner != 'o' and winner!= 'Cat':
-			if turn % 2 != 0:
-				displayBoard(board)
-				
-				move = input('Please enter the space number you would like to move in: ') - 1
-				
-				if checkLegalMove(move, board):
-					board[move] = mover(turn)
-					turn = turn + 1
-				else:
-					print 'Please enter a valid move'
-					
-				winner = checkWinner(board)
-			else:
-				move = input(mediumComputer(board))
-		print winner + " won!"
-	if difficulty == 3:
-		while winner != 'x' and winner != 'o' and winner!= 'Cat':
-			if turn % 2 != 0:
-				displayBoard(board)
-				
-				move = input('Please enter the space number you would like to move in: ') - 1
-				
-				if checkLegalMove(move, board):
-					board[move] = mover(turn)
-					turn = turn + 1
-				else:
-					print 'Please enter a valid move'
-					
-				winner = checkWinner(board)
-			else:
-				move = input(hardComputer(board))
-		print winner + " won!"
+	computer(input('Please input 1 for easy difficulty 2 for medium difficulty and 3 for hard difficulty: '))
